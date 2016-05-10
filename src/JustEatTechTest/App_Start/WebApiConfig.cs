@@ -1,4 +1,6 @@
 ﻿using System.Web.Http;
+using JustEatTechTest.Web.Plumbing;
+using StructureMap;
 
 namespace JustEatTechTest.Web
 {
@@ -9,6 +11,10 @@ namespace JustEatTechTest.Web
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            // create IoC container and set dependency resolver
+            IContainer container = StructureMapHelper.BootstrapContainer();
+            StructureMapResolver structureMapResolver = new StructureMapResolver(container);
+            config.DependencyResolver = structureMapResolver;
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

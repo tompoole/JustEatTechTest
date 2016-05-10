@@ -1,10 +1,74 @@
 ﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-</head>
-<body>
+<html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>JustEat Tech Test</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body ng-app="justEatTechTest">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">JustEat Tech Test</a>
+            </div>
+        </div>
+    </nav>
+
+    <div ng-controller="restaurantSearchController as vm" id="main-container" class="container">
+
+        <!-- Begin form -->
+        <div id="form-container" class="row">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="" for="">Outcode: </label>
+                    <input ng-model="vm.outcode" type="text" id="outcode" class="form-control" placeholder="For example RG1">
+                </div>
+                <button ng-click="vm.performSearch()" type="submit" class="btn btn-primary">Search</button>
+                <span ng-if="vm.formHasError" class="form-error text-danger">{{vm.errorMessage}}</span>
+            </form>
+        </div>
+        <!-- End form -->
+
+        <div ng-if="vm.results" id="results-container" class="row">
+            <h3>{{vm.results.length}} results found for outcode {{vm.searchOutcode}}</h3>
+            <table ng-if="vm.results.length" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Rating</th>
+                        <th>Cusines</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="restaurant in vm.results">
+                        <td>{{restaurant.Id}}</td>
+                        <td class="r-name">{{restaurant.Name}}</td>
+                        <td>{{restaurant.RatingAverage}}/6</td>
+                        <td>
+                            <ul>
+                                <li ng-repeat="cuisine in restaurant.CuisineTypes">{{cuisine.Name}} </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+    
+    <script src="scripts/vendor/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
 </body>
+
 </html>

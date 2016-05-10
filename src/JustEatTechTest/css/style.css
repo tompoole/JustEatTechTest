@@ -1,0 +1,31 @@
+body {
+    margin-top: 80px;
+}
+
+#main-container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#results-container {
+    margin-top: 10px;
+}
+
+.form-error {
+    padding-left: 10px;
+}
+
+#results-container td {
+    vertical-align: middle;
+}
+
+#results-container ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.r-name {
+    font-weight: bold;
+}

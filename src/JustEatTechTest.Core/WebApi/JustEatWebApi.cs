@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using JustEatTechTest.Core.Interfaces;
 using JustEatTechTest.Core.Models;
@@ -17,10 +18,11 @@ namespace JustEatTechTest.Core.WebApi
                 client.Headers.Add("Accept-Tenant" , "uk");
                 client.Headers.Add("Accept-Language", "en-GB");
 
-                // This probably should be loaded from config, rather than being hardcoded.// This probably should be loaded from config, rather than being hardcoded.
-                client.Headers.Add("Authorization", "Basic VGVjaFRlc3RBUEk6dXNlcjI="); 
+                // This probably should be loaded from config, rather than being hardcoded.
+                client.Headers.Add("Authorization", "Basic VGVjaFRlc3RBUEk6dXNlcjI=");
 
-                string response = client.DownloadString($"/restaurants?q={outcode}");
+                outcode = Uri.EscapeDataString(outcode);
+                string response = client.DownloadString($"restaurants?q={outcode}");
 
                 JToken jsonObject = JsonConvert.DeserializeObject<JToken>(response);
                 List<JustEatRestaurant> restaurants = jsonObject["Restaurants"].ToObject<List<JustEatRestaurant>>();
