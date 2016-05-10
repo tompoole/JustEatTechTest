@@ -8,20 +8,28 @@ namespace JustEatTechTest.Core.Services
 {
     public class RestaurantService : IRestaurantService
     {
+        private readonly IJustEatWebApi _justEatWebApi;
+
+        public RestaurantService(IJustEatWebApi justEatWebApi)
+        {
+            _justEatWebApi = justEatWebApi;
+        }
+
         public ServiceResponse<List<JustEatRestaurant>> GetRestaurantsForOutcode(string outcode)
         {
+            if (IsValidOutcode(outcode) == false)
+            {
+                return CreateFailure($"Outcode {outcode} is not valid.");
+            }
+
             return CreateSuccess(new List<JustEatRestaurant>());
         }
 
         private bool IsValidOutcode(string outcode)
         {
-            if (string.IsNullOrEmpty(outcode))
-            {
-                return false;
-            }
+            outcode = outcode?.Trim() ?? string.Empty;
 
-            Regex.IsMatch()
-            
+            return Regex.IsMatch(outcode, "^[a-z]{1,2}[0-9]{1,2}$", RegexOptions.IgnoreCase);
         }
     }
 }
