@@ -11,8 +11,8 @@ namespace JustEatTechTest.UnitTests
             {
                 return new List<JustEatRestaurant>
                 {
-                    new JustEatRestaurant { Id = 1, Name = "Wok on Wheels", RatingAverage = 5},
-                    new JustEatRestaurant { Id = 2, Name = "Papa John's", RatingAverage = 4}
+                    new JustEatRestaurant { Id = 1, Name = "Wok on Wheels", RatingStars = 5},
+                    new JustEatRestaurant { Id = 2, Name = "Papa John's", RatingStars = 4}
                 };
             }
         }

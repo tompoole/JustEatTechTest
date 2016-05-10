@@ -53,7 +53,7 @@
                     <tr ng-repeat="restaurant in vm.results">
                         <td>{{restaurant.Id}}</td>
                         <td class="r-name">{{restaurant.Name}}</td>
-                        <td>{{restaurant.RatingAverage}}/6</td>
+                        <td>{{restaurant.RatingStars}}/6</td>
                         <td>
                             <ul>
                                 <li ng-repeat="cuisine in restaurant.CuisineTypes">{{cuisine.Name}} </li>
