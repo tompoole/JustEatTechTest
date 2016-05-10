@@ -6,8 +6,8 @@ namespace JustEatTechTest.Core.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string RatingAverage { get; set; }
+        public int RatingAverage { get; set; }
 
-        public List<JustEatCusineType> CusineTypes { get; set; }
+        public List<JustEatCuisineType> CuisineTypes { get; set; }
     }
 }

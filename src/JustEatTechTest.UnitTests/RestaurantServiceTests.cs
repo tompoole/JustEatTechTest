@@ -1,4 +1,6 @@
-﻿using JustEatTechTest.Core.Interfaces;
+﻿using System.Collections.Generic;
+using JustEatTechTest.Core.Interfaces;
+using JustEatTechTest.Core.Models;
 using JustEatTechTest.Core.Services;
 using Moq;
 using Xunit;
@@ -45,13 +47,16 @@ namespace JustEatTechTest.UnitTests
         [InlineData("RG1 ")]
         public void ValidOutcodesShouldReturnSuccess(string outcode)
         {
-            IJustEatWebApi justEatWebApi = new Mock<IJustEatWebApi>().Object;
+            var mockApi = new Mock<IJustEatWebApi>();
+            mockApi.Setup(x => x.GetRestaurantsFromOutcode(It.IsAny<string>())).Returns(TestData.Restaurants);
+            IJustEatWebApi justEatWebApi = mockApi.Object;
+
             IRestaurantService restaurantService = new RestaurantService(justEatWebApi);
 
             var result = restaurantService.GetRestaurantsForOutcode(outcode);
 
             Assert.False(result.Error);
-
+            Assert.NotEmpty(result.Data);
         }
     }
 }

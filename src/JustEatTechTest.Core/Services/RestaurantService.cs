@@ -19,10 +19,12 @@ namespace JustEatTechTest.Core.Services
         {
             if (IsValidOutcode(outcode) == false)
             {
-                return CreateFailure($"Outcode {outcode} is not valid.");
+                return CreateFailure($"Outcode \"{outcode}\" is not valid.");
             }
 
-            return CreateSuccess(new List<JustEatRestaurant>());
+            List<JustEatRestaurant> restaurants = _justEatWebApi.GetRestaurantsFromOutcode(outcode);
+
+            return CreateSuccess(restaurants);
         }
 
         private bool IsValidOutcode(string outcode)

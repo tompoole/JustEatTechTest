@@ -6,6 +6,6 @@ namespace JustEatTechTest.Core.Interfaces
 {
     public interface IJustEatWebApi
     {
-        IList<JustEatRestaurant> GetRestaurantsFromOutcode(string outcode);
+        List<JustEatRestaurant> GetRestaurantsFromOutcode(string outcode);
     }
 }
