@@ -45,6 +45,7 @@
     <Compile Include="Models\JustEatCusineType.cs" />
     <Compile Include="Models\JustEatRestaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceResponse.cs" />
     <Compile Include="Services\RestaurantService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
