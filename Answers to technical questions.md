@@ -11,6 +11,7 @@ If I were to spend more time on the solution, I would:
 - Add more unit tests to cover the additonal functionality.
 - Add more comprehensive integration tests, possibly testing the web project.
 - Add tests to the Angular application.
+- Load changeable details (such as the web service API key)  from configuration, rather than having it hard-coded
 
 ## What was the most useful feature that was added to the latest version of your chosen language? 
 
